@@ -11,16 +11,16 @@ class TweetBox extends React.Component {
         }
     }
     tweetInput(event) {
-        this.setState({ tweet: event.target.value })
-        this.setState({ length: event.target.value.length })
+        this.setState({ tweet: event.target.value });
+        this.setState({ length: event.target.value.length });
     }
     onSubmiting(event) {
-        event.preventDefault()
+        event.preventDefault();
         const newTweet = {
             text : this.state.tweet,
             date : new Date().toString().split(' ').slice(0,5).join(' ') 
         }
-        this.props.onAddTweet(newTweet)
+        this.props.onAddTweet(newTweet);
     }
     render() {
         return (
@@ -54,8 +54,6 @@ class TweetBox extends React.Component {
 
             </Container>
         )
-
     }
-
 }
 export default TweetBox;

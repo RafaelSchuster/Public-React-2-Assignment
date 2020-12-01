@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import './App.css';
-import TweetBox from './tweetBox'
-import TweetList from './tweetList'
-import * as localForage from 'localforage'
+import TweetBox from './Components/tweetBox';
+import TweetList from './Components/tweetList';
+import * as localForage from 'localforage';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,15 +17,15 @@ class App extends React.Component {
       return {
         tweets: [newTweet, ...state.tweets]
       }
-    })
+    });
   }
 
   componentDidMount() {
     localForage.getItem('tweets').then((storedData) => {
       if (storedData) {
         this.setState({ tweets: storedData });
-      }
-    })
+      };
+    });
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -38,7 +38,6 @@ class App extends React.Component {
       <TweetBox onAddTweet={newTweet => this.addTweet(newTweet)} />
       <TweetList tweets={tweets}></TweetList>
     </div>
-
   }
 }
 

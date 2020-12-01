@@ -1,5 +1,4 @@
-import React from 'react'
-import { ListGroup } from 'react-bootstrap'
+import React from 'react';
 
 function TweetItem(props) {
     return (
@@ -7,15 +6,15 @@ function TweetItem(props) {
             className='tweetItem'>
             <span
                 className='userName'>
-                {props.username}
+                {props.username};
             </span>
             <span
                 className='tweetDate'>
-                {props.date}
+                {props.date};
             </span>
             <span
                 className='tweetTxt'>
-                {props.text}
+                {props.text};
             </span>
         </div>
     )

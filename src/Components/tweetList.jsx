@@ -1,8 +1,7 @@
 import React from 'react';
-import TweetItem from './tweetItem'
+import TweetItem from './tweetItem';
 
 function TweetList (props) {
-
         return <ul>
             {props.tweets.map(tweet =>
                 <TweetItem
@@ -12,8 +11,7 @@ function TweetList (props) {
                 date = {tweet.date}
                 />
             )}
-        </ul>  
-        
+        </ul>     
     } 
 
 export default TweetList;
