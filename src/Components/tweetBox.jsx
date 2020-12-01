@@ -17,12 +17,15 @@ class TweetBox extends React.Component {
     onSubmiting(event) {
         event.preventDefault();
         const newTweet = {
-            text : this.state.tweet,
-            date : new Date().toString().split(' ').slice(0,5).join(' ') 
+            userName : 'Rafael Schuster',
+            content : this.state.tweet,
+            date : new Date().toISOString()
         }
         this.props.onAddTweet(newTweet);
+        this.setState ({ tweet : ''})
     }
     render() {
+        const {tweet} = this.state
         return (
             <Container>
                 <Form
@@ -34,6 +37,7 @@ class TweetBox extends React.Component {
                         id=''
                         rows={10}
                         onChange={event => this.tweetInput(event)}
+                        value = {tweet}
                         placeholder='What you have in mind...'>
                     </FormControl>
                     <Button

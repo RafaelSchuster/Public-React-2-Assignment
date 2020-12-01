@@ -105,3 +105,9 @@ font-size: 14px;
 line-height: 16px;
 color: #6C757D;
 }
+.loading{
+  position: absolute;
+  top: 190px;
+  left: 47%;
+  z-index: 1;
+}

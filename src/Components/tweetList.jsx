@@ -6,8 +6,8 @@ function TweetList (props) {
             {props.tweets.map(tweet =>
                 <TweetItem
                 key = {tweet.date}
-                username = 'test'
-                text = {tweet.text}
+                username = {tweet.userName}
+                text = {tweet.content}
                 date = {tweet.date}
                 />
             )}
