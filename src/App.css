@@ -15,7 +15,7 @@ html body {
   display: inline-block;
   width: 600px;
   height: 180px;
-  top: 5px;
+  top: 105px;
   border: 2px solid #CCCCCC !important;
   box-sizing: border-box;
   border-radius: 6px;
@@ -42,7 +42,7 @@ html body {
 .tweetBtn {
   position: absolute;
   left: 60%;
-  top: 13%;
+  top: 23%;
 }
 
 .maxChar {
@@ -50,64 +50,131 @@ html body {
   width: 340px;
   height: 29px;
   left: 22%;
-  top: 120px;
+  top: 165px;
   padding: 4px 10px 0px 7px !important;
 }
-.tweetItem{
+
+.tweetItem {
   position: relative;
-width: 600px;
-height: 100px;
-left: 593px;
-top: 205px;
-border-radius: 6px;
-background-color:#343A40 ; 
-color: white;
-margin-bottom: 15px ;
+  width: 600px;
+  height: 100px;
+  left: 588px;
+  top: 250px;
+  border-radius: 6px;
+  background-color: #343A40;
+  color: white;
+  margin-bottom: 15px;
 }
-.tweetTxt{
+
+.tweetTxt {
   position: absolute;
-width: 455px;
-height: 32px;
-top: 48px ;
-left: 20px;
-font-family: Roboto;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 16px;
-letter-spacing: 0em;
-text-align: left;
-color: #FFFFFF;
+  width: 455px;
+  height: 32px;
+  top: 48px;
+  left: 20px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
 }
-.userName{
+
+.userName {
   position: absolute;
-width: 162px;
-height: 12px;
-top: 20px;
-left: 20px;
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
-display: flex;
-align-items: center;
-color: #6C757D;
+  width: 162px;
+  height: 12px;
+  top: 20px;
+  left: 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #6C757D;
 }
-.tweetDate{
+
+.tweetDate {
   position: absolute;
-left: 411px;
-top: 18px;
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
-color: #6C757D;
+  left: 411px;
+  top: 18px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #6C757D;
 }
-.loading{
+
+.loading {
   position: absolute;
   top: 190px;
   left: 47%;
   z-index: 1;
+}
+
+.navBar {
+  position: absolute;
+  width: 1076px;
+  height: 58px;
+  left: 25%;
+  top: 0px;
+  border-radius: 6px;
+}
+
+.navLink {
+  margin-right: 45px;
+}
+
+.profile {
+  position: absolute;
+  width: 103px;
+  height: 42px;
+  left: 35%;
+  top: 110px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  color: #FFFFFF;
+}
+
+.userNameBox {
+  position: absolute;
+  display: inline-block;
+  width: 600px !important;
+  height: 180px;
+  top: 22%;
+  border: 2px solid #CCCCCC !important;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background-color: #15202B !important;
+  left: 35%;
+  padding: 20px !important;
+  color: white !important;
+}
+
+.userLabel {
+  position: absolute;
+  left: 673px;
+  top: 189px;
+  z-index: 1;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.userBtn {
+  position: absolute;
+  top: 300px;
+  left: 62%;
 }

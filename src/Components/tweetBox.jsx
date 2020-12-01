@@ -8,6 +8,7 @@ class TweetBox extends React.Component {
         this.state = {
             tweet: '',
             length: 0,
+            user: ''
         }
     }
     tweetInput(event) {
@@ -15,16 +16,18 @@ class TweetBox extends React.Component {
         this.setState({ length: event.target.value.length });
     }
     onSubmiting(event) {
+        console.log(this.props.userdraft)
         event.preventDefault();
         const newTweet = {
-            userName : 'Rafael Schuster',
             content : this.state.tweet,
+            userName : 'ij',
             date : new Date().toISOString()
         }
         this.props.onAddTweet(newTweet);
         this.setState ({ tweet : ''})
     }
     render() {
+        console.log(this.props)
         const {tweet} = this.state
         return (
             <Container>
