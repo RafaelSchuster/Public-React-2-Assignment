@@ -178,3 +178,10 @@ html body {
   top: 300px;
   left: 62%;
 }
+
+.spin{
+  position: absolute;
+  top: 290px;
+  left: 48%;
+  z-index: 1;
+}

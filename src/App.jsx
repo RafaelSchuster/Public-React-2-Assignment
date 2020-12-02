@@ -1,89 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import NavigationBar from './Components/navBar';
 import TweetBox from './Components/tweetBox';
 import TweetList from './Components/tweetList';
 import { getTweet, createTweet } from './lib/api';
-import Profile from './Components/profile'
+import Profile from './Components/profile';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
 import * as localForage from 'localforage';
+import { TweetContext } from './Context/TweetContext';
+import { Spinner } from 'react-bootstrap';
 
+let tweetResponse;
 
-let timer;
+function App() {
+  const [tweets, setTweets] = useState();
+  const [tweet, setTweet] = useState();
+  const [length, setLength] = useState();
+  const [userId, setUserId] = useState();
+  const [loading, setLoading] = useState();
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userdraft: '',
-      tweets: [],
-      loading: false
-    }
-  }
-
-  componentDidMount() {
-    this.fetchTweet();
-  }
-
-  addTweet(newTweet) {
-    const { loading } = this.state;
-    try {
-      if (!loading) {
-        this.setState({ loading: true });
-        createTweet(newTweet).then(() => {
-          this.fetchTweet();
-        })
-      };
-    } catch (error) {
-      alert("Nope");
-    }
-    timer = setTimeout(() => {
-      alert("Sorry, your tweet wasn't uploaded :(")
-      this.setState({ loading: false })
-    }, 22000)
-  }
-
-  userChange(user) {
-    localForage.setItem('user', user.user)
-  }
-
-  async fetchTweet() {
-    clearTimeout(timer)
-    this.setState({ loading: true });
-    localForage.getItem('user').then((storedData) => {
-      this.setState({ userdraft: storedData });
-    })
+  async function fetchTweet() {
     const response = await getTweet();
-    const tweet = response.data;
-    this.setState({ tweets: tweet.tweets, loading: false });
+    tweetResponse = response.data;
   }
 
+  useEffect(() => {
+    fetchTweet();
+    setLoading(true);
+    setInterval(() => {
+      fetchTweet();
+      setTweets(tweetResponse)
+      setLoading(false);
+    }, 10000);
+    localForage.getItem('user').then((storedData) => {
+      setUserId(storedData);
+    })
+  }, [])
 
-  render() {
-    const { tweets, loading, userdraft } = this.state;
-    return (
+  function userChange(user) {
+    localForage.setItem('user', user.user);
+  }
+
+  return (
+    <TweetContext.Provider value={{
+      userChange: user => userChange(user),
+      tweets, setTweets,
+      tweet, setTweet,
+      length, setLength,
+      userId, setUserId,
+      loading, setLoading,
+    }}>
       <Router>
         <Switch>
           <Route path='/' exact>
             <div>
-              {loading && <h5 className="loading" >Loading...</h5>}
+              {loading && <Spinner animation="grow" variant="info" className="spin" />}
               <NavigationBar />
-              <TweetBox userdraft={userdraft} onAddTweet={newTweet => this.addTweet(newTweet)} />
-              <TweetList tweets={tweets}></TweetList>
+              <TweetBox />
+              <TweetList></TweetList>
             </div>
           </Route>
           <Route path="/profile">
             <NavigationBar />
-            <Profile userChange={user => this.userChange(user)} />
+            <Profile />
           </Route>
         </Switch>
       </Router>
-    )
-  }
-}
+    </TweetContext.Provider>
 
+  )
+}
 export default App;

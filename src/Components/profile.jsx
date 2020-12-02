@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { TweetContext } from '../Context/TweetContext';
 
 
 class Profile extends React.Component {
+    static contextType = TweetContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -14,11 +16,11 @@ class Profile extends React.Component {
         this.setState({ user: event.target.value })
     }
     onSubmiting(event) {
-        event.preventDefault()
+        event.preventDefault();
         const userName = {
             user: this.state.user
         }
-        this.props.userChange(userName)
+        this.context.userChange(userName);
     }
     render() {
         return (
