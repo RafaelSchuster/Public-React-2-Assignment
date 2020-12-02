@@ -1,40 +1,39 @@
 import React from 'react'
-import {  Button, Form, FormControl } from 'react-bootstrap';
+import { Button, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-class Profile extends React.Component{
-    constructor(props){
+class Profile extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            user : ''
+            user: ''
         }
     }
-    userChange(event){
-        this.setState({user : event.target.value})
+    userChange(event) {
+        this.setState({ user: event.target.value })
     }
-    onSubmiting(event){
+    onSubmiting(event) {
         event.preventDefault()
         const userName = {
-            user : this.state.user
+            user: this.state.user
         }
-        console.log(this.state.user)
         this.props.userChange(userName)
     }
-    render(){
+    render() {
         return (
             <div>
                 <span className="profile" >Profile</span>
                 <Form
                     onSubmit={event => this.onSubmiting(event)}
                     className="form-group">
-                    <Form.Label className = 'userLabel'>User Name</Form.Label>
+                    <Form.Label className='userLabel'>User Name</Form.Label>
                     <FormControl
                         as="textarea"
                         className="form-control userNameBox"
                         id=''
                         rows={1}
-                        onChange = {event => this.userChange(event)}
+                        onChange={event => this.userChange(event)}
                         placeholder='User Name..'>
                     </FormControl>
                     <Button

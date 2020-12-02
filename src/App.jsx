@@ -9,7 +9,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
+import * as localForage from 'localforage';
 
 
 let timer;
@@ -18,7 +19,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userdraft : '',
+      userdraft: '',
       tweets: [],
       loading: false
     }
@@ -46,38 +47,38 @@ class App extends React.Component {
     }, 22000)
   }
 
-  userChange(user){
-    console.log(user)
-    this.setState({userdraft : user})
+  userChange(user) {
+    localForage.setItem('user', user.user)
   }
-
 
   async fetchTweet() {
     clearTimeout(timer)
     this.setState({ loading: true });
+    localForage.getItem('user').then((storedData) => {
+      this.setState({ userdraft: storedData });
+    })
     const response = await getTweet();
     const tweet = response.data;
     this.setState({ tweets: tweet.tweets, loading: false });
   }
 
-  
+
   render() {
-    console.log(this.state.userdraft)
     const { tweets, loading, userdraft } = this.state;
     return (
       <Router>
         <Switch>
-          <Route path exact='/'>
+          <Route path='/' exact>
             <div>
               {loading && <h5 className="loading" >Loading...</h5>}
               <NavigationBar />
-              <TweetBox userdraft = {userdraft} onAddTweet={newTweet => this.addTweet(newTweet)} />
+              <TweetBox userdraft={userdraft} onAddTweet={newTweet => this.addTweet(newTweet)} />
               <TweetList tweets={tweets}></TweetList>
             </div>
           </Route>
           <Route path="/profile">
             <NavigationBar />
-            <Profile userChange = {user => this.userChange(user)} />
+            <Profile userChange={user => this.userChange(user)} />
           </Route>
         </Switch>
       </Router>

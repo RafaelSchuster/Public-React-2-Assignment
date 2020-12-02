@@ -16,19 +16,17 @@ class TweetBox extends React.Component {
         this.setState({ length: event.target.value.length });
     }
     onSubmiting(event) {
-        console.log(this.props.userdraft)
         event.preventDefault();
         const newTweet = {
-            content : this.state.tweet,
-            userName : 'ij',
-            date : new Date().toISOString()
+            content: this.state.tweet,
+            userName: this.props.userdraft,
+            date: new Date().toISOString()
         }
         this.props.onAddTweet(newTweet);
-        this.setState ({ tweet : ''})
+        this.setState({ tweet: '' })
     }
     render() {
-        console.log(this.props)
-        const {tweet} = this.state
+        const { tweet } = this.state
         return (
             <Container>
                 <Form
@@ -40,7 +38,7 @@ class TweetBox extends React.Component {
                         id=''
                         rows={10}
                         onChange={event => this.tweetInput(event)}
-                        value = {tweet}
+                        value={tweet}
                         placeholder='What you have in mind...'>
                     </FormControl>
                     <Button
