@@ -59,7 +59,7 @@ html body {
   width: 600px;
   height: 100px;
   left: 588px;
-  top: 250px;
+  top: 300px !important;
   border-radius: 6px;
   background-color: #343A40;
   color: white;

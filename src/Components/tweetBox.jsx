@@ -17,6 +17,7 @@ function TweetBox() {
     }
 
     setTweet(tweetText);
+    
     if (tweet) setLength(tweet.length);
 
     function onSubmiting(event) {
